@@ -4,6 +4,10 @@
 
 This is a modern dark-themed personal portfolio built to showcase projects, skills, and experience as a Web Developer and UI/UX Designer. The portfolio focuses on clean design, smooth interactions, and a premium user experience.
 
+## Live Demo
+
+https://harshika-portfolio-my.vercel.app/
+
 ## Features
 
 * Minimal dark UI with modern typography
@@ -65,7 +69,7 @@ npm run build
 
 ## Deployment
 
-You can deploy this project using platforms like Vercel or Netlify.
+This project is deployed on Vercel.
 
 ## Customization
 
