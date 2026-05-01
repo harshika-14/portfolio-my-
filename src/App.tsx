@@ -471,7 +471,7 @@ export default function App() {
           >
             Harshika Bighane <br />
             <span className="text-[#71717A] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans font-light block mt-3">
-              Frontend Engineer <span className="italic font-serif text-[#555]">&</span> UI Designer
+              Web Developer <span className="italic font-serif text-[#555]">&</span> UI Designer
             </span>
           </motion.h1>
 
