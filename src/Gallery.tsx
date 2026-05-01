@@ -1,22 +1,9 @@
 import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import SplashCursor from "./SplashCursor";
 
-const imageItems = Array.from({ length: 21 }, (_, i) => {
-  const id = i + 1;
-  return {
-    id,
-    src: `/arsenal/img_${id}.jpeg`,
-    alt: `Archive Memory ${id}`,
-  };
-});
-
-export default function Gallery() {
-  const [hiddenIds, setHiddenIds] = useState<number[]>([]);
-  const visibleImages = imageItems.filter((item) => !hiddenIds.includes(item.id));
-
+export default function Service() {
   return (
     <div className="min-h-screen relative font-sans text-base leading-relaxed selection:bg-white/20 selection:text-white bg-[#0A0A0A]">
       <SplashCursor />
@@ -33,27 +20,32 @@ export default function Gallery() {
           className="mb-32"
         >
           <div className="mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif text-[#EDEDED] mb-4 tracking-tight">Visual Archive</h1>
+            <h1 className="text-4xl md:text-5xl font-serif text-[#EDEDED] mb-4 tracking-tight">Services</h1>
+            <p className="max-w-3xl text-[#A1A1AA] text-base leading-8">Professional Web Designing and Graphic Designing services to help you build a strong digital presence and a memorable brand identity.</p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {visibleImages.map((item) => (
-              <article
-                key={item.id}
-                className="group relative aspect-[3/4] overflow-hidden rounded-3xl border border-white/10 bg-[#121212] shadow-[0_14px_40px_rgba(0,0,0,0.5)]"
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  onError={() =>
-                    setHiddenIds((prev) => (prev.includes(item.id) ? prev : [...prev, item.id]))
-                  }
-                  className="h-full w-full object-cover grayscale-[25%] opacity-80 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </article>
-            ))}
+          <div className="grid gap-6 md:grid-cols-2">
+            <article className="rounded-3xl border border-white/10 bg-[#121212] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+              <span className="text-sm uppercase tracking-[0.3em] text-[#71717A]">Web Designing</span>
+              <h2 className="mt-4 text-3xl font-serif text-[#EDEDED]">Web Designing</h2>
+              <p className="mt-4 text-[#A1A1AA] leading-7">Crafting responsive, modern websites with clean layouts, strong UX, and visual polish for desktop and mobile users.</p>
+              <ul className="mt-6 space-y-3 text-[#D6D6D8] list-disc list-inside">
+                <li>Responsive website design</li>
+                <li>Portfolio and business pages</li>
+                <li>Brand-focused digital experiences</li>
+              </ul>
+            </article>
+
+            <article className="rounded-3xl border border-white/10 bg-[#121212] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+              <span className="text-sm uppercase tracking-[0.3em] text-[#71717A]">Graphic Designing</span>
+              <h2 className="mt-4 text-3xl font-serif text-[#EDEDED]">Graphic Designing</h2>
+              <p className="mt-4 text-[#A1A1AA] leading-7">Creating visual content for branding, social media, and print that makes your message clear and memorable.</p>
+              <ul className="mt-6 space-y-3 text-[#D6D6D8] list-disc list-inside">
+                <li>Logo and brand identity</li>
+                <li>Social media creatives</li>
+                <li>Posters, flyers, and digital graphics</li>
+              </ul>
+            </article>
           </div>
         </motion.section>
       </div>
