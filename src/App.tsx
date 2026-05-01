@@ -422,23 +422,23 @@ export default function App() {
       <HeroBackground />
       <div className="noise-overlay"></div>
 
-      <div className="max-w-[800px] mx-auto px-6 py-12 md:py-24 relative z-10">
+      <div className="max-w-[800px] mx-auto px-4 sm:px-6 py-10 md:py-24 relative z-10">
 
         <motion.header
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center justify-between mb-32 sticky top-6 z-40 bg-[#0A0A0A]/80 backdrop-blur-md py-4 px-6 rounded-2xl border border-white/5 shadow-lg"
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-16 md:mb-32 sticky top-3 sm:top-6 z-40 bg-[#0A0A0A]/80 backdrop-blur-md py-3 sm:py-4 px-4 sm:px-6 rounded-2xl border border-white/5 shadow-lg"
         >
           <span className="font-serif italic text-2xl text-[#EDEDED] font-medium tracking-tight">H.</span>
-          <nav className="flex items-center gap-8 text-[13px] font-medium text-[#A1A1AA] tracking-wide uppercase">
+          <nav className="flex w-full sm:w-auto items-center justify-between sm:justify-start gap-4 sm:gap-8 text-[11px] sm:text-[13px] font-medium text-[#A1A1AA] tracking-wide uppercase">
             <a href="#about" className="hover:text-[#EDEDED] transition-colors">About</a>
             <a href="#work" className="hover:text-[#EDEDED] transition-colors">Work</a>
-            <Link to="/gallery" className="hover:text-[#EDEDED] transition-colors">Gallery</Link>
+            <Link to="/service" className="hover:text-[#EDEDED] transition-colors">Services</Link>
             <a href="#contact" className="hover:text-[#EDEDED] transition-colors">Contact</a>
           </nav>
         </motion.header>
 
-        <section className="mb-32">
+        <section className="mb-20 md:mb-32">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{
@@ -467,10 +467,10 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#EDEDED] mb-6 leading-[1.1] tracking-tight font-medium"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-[#EDEDED] mb-6 leading-[1.1] tracking-tight font-medium"
           >
             Harshika Bighane <br />
-            <span className="text-[#71717A] text-2xl md:text-3xl lg:text-4xl font-sans font-light block mt-3">
+            <span className="text-[#71717A] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans font-light block mt-3">
               Frontend Engineer <span className="italic font-serif text-[#555]">&</span> UI Designer
             </span>
           </motion.h1>
@@ -479,15 +479,15 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-4 mt-10"
+            className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 mt-8 sm:mt-10"
           >
-            <a href="#work" className="px-6 py-3 bg-[#EDEDED] text-[#0A0A0A] font-medium text-sm rounded-full hover:scale-105 hover:bg-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            <a href="#work" className="w-full sm:w-auto text-center px-6 py-3 bg-[#EDEDED] text-[#0A0A0A] font-medium text-sm rounded-full hover:scale-105 hover:bg-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
               View Work
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white/5 border border-white/10 text-[#EDEDED] font-medium text-sm rounded-full hover:bg-white/10 transition-all">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto text-center px-6 py-3 bg-white/5 border border-white/10 text-[#EDEDED] font-medium text-sm rounded-full hover:bg-white/10 transition-all">
               Resume
             </a>
-            <a href="#contact" className="px-6 py-3 text-[#A1A1AA] hover:text-[#EDEDED] font-medium text-sm rounded-full transition-all">
+            <a href="#contact" className="w-full sm:w-auto text-center px-6 py-3 text-[#A1A1AA] hover:text-[#EDEDED] font-medium text-sm rounded-full transition-all">
               Contact
             </a>
           </motion.div>
@@ -684,7 +684,7 @@ export default function App() {
           viewport={{ once: true, margin: "-100px" }}
           className="mb-32"
         >
-          <div className="flex items-baseline justify-between mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-6">
             <h2 className="text-[13px] font-medium text-[#71717A] uppercase tracking-widest">Interactive Playground</h2>
             <span className="text-sm font-serif italic text-[#A1A1AA]">Try drawing something</span>
           </div>
@@ -700,8 +700,8 @@ export default function App() {
           id="contact"
           className="mb-24 pt-20 border-t border-white/10"
         >
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-[#EDEDED] mb-6 tracking-tight">Let's build something impactful.</h2>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-serif text-[#EDEDED] mb-6 tracking-tight">Let's build something impactful.</h2>
             <p className="text-[#A1A1AA] max-w-md mx-auto font-light text-[15px]">
               Currently open for new opportunities. Drop a message below and I'll get back to you as soon as possible.
             </p>
@@ -770,7 +770,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-[#0A0A0A]/90 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-[#0A0A0A]/90 backdrop-blur-md"
             onClick={() => setActiveCaseStudy(null)}
           >
             <motion.div
@@ -778,10 +778,10 @@ export default function App() {
               animate={{ y: 0, scale: 1, opacity: 1 }}
               exit={{ y: 20, scale: 0.95, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-3xl max-h-[90vh] bg-[#111] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+              className="w-full max-w-3xl max-h-[92vh] bg-[#111] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
               onClick={e => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between p-6 border-b border-white/5">
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/5">
                 <span className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-medium text-[#A1A1AA] uppercase tracking-widest border border-white/5">
                   Case Study
                 </span>
@@ -793,9 +793,9 @@ export default function App() {
                 </button>
               </div>
 
-              <div className="overflow-y-auto p-6 md:p-10 scrollbar-hide flex-1">
-                <h2 className="text-3xl md:text-4xl font-serif text-[#EDEDED] mb-4">{activeCaseStudy.title}</h2>
-                <p className="text-[#A1A1AA] text-lg font-light mb-10">{activeCaseStudy.shortDesc}</p>
+              <div className="overflow-y-auto p-4 sm:p-6 md:p-10 scrollbar-hide flex-1">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#EDEDED] mb-4">{activeCaseStudy.title}</h2>
+                <p className="text-[#A1A1AA] text-base sm:text-lg font-light mb-8 sm:mb-10">{activeCaseStudy.shortDesc}</p>
 
                 <div className="aspect-video w-full bg-[#1A1A1A] rounded-xl border border-white/5 mb-12 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#555] to-transparent"></div>
@@ -826,7 +826,7 @@ export default function App() {
                   )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 mb-10 sm:mb-12">
                   <div>
                     <h3 className="text-sm font-medium text-[#EDEDED] uppercase tracking-widest mb-4 flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-red-500/50"></div> Problem
@@ -853,12 +853,12 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="p-6 border-t border-white/5 flex justify-end">
+              <div className="p-4 sm:p-6 border-t border-white/5 flex justify-end">
                 <a
                   href={activeCaseStudy.link}
                   target={activeCaseStudy.link !== "#" ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="px-6 py-2.5 bg-[#EDEDED] text-[#0A0A0A] font-medium text-sm rounded-full hover:scale-105 transition-transform flex items-center gap-2"
+                  className="w-full sm:w-auto justify-center px-6 py-2.5 bg-[#EDEDED] text-[#0A0A0A] font-medium text-sm rounded-full hover:scale-105 transition-transform flex items-center gap-2"
                 >
                   {activeCaseStudy.linkLabel || "Live Preview"} <ArrowUpRight size={16} />
                 </a>
