@@ -20,11 +20,12 @@ import {
   Trash2,
   Eraser
 } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import SplashCursor from "./SplashCursor";
 import HeroBackground from "./HeroBackground";
+import { supabase } from "./supabaseClient";
 
 const PROJECTS = [
   {
@@ -407,6 +408,11 @@ const InteractiveGrid = () => {
 
 export default function App() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<any>(null);
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [contactStatus, setContactStatus] = useState<{ type: 'success' | 'error' | 'info'; message: string } | null>(null);
 
   useEffect(() => {
     if (activeCaseStudy) {
@@ -415,6 +421,43 @@ export default function App() {
       document.body.style.overflow = 'unset';
     }
   }, [activeCaseStudy]);
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!contactName.trim() || !contactEmail.trim() || !contactMessage.trim()) {
+      setContactStatus({ type: 'error', message: 'Please fill in all fields.' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setContactStatus({ type: 'info', message: 'Sending your message...' });
+
+    const payload = {
+      name: contactName.trim(),
+      email: contactEmail.trim(),
+      message: contactMessage.trim(),
+    };
+
+    console.log('Submitting contact payload', payload);
+
+    const { error } = await supabase
+      .from('contacts')
+      .insert([payload]);
+
+    console.log('Supabase insert result', { error });
+
+    if (error) {
+      setContactStatus({ type: 'error', message: `Supabase error: ${error.message}` });
+    } else {
+      setContactStatus({ type: 'success', message: 'Message sent successfully — thank you!' });
+      setContactName('');
+      setContactEmail('');
+      setContactMessage('');
+    }
+
+    setIsSubmitting(false);
+  };
 
   return (
     <div className="min-h-screen relative font-sans text-base leading-relaxed selection:bg-white/20 selection:text-white">
@@ -710,13 +753,15 @@ export default function App() {
           <div className="max-w-xl mx-auto bg-[#111] p-8 md:p-10 rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#555] to-transparent opacity-20"></div>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleContactSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-[12px] font-medium text-[#71717A] tracking-widest uppercase ml-1">Name</label>
                   <input
                     type="text"
                     id="name"
+                    value={contactName}
+                    onChange={(e) => setContactName(e.target.value)}
                     placeholder="Name"
                     className="w-full bg-[#0A0A0A] border border-white/5 rounded-xl px-4 py-3.5 text-[15px] text-[#EDEDED] placeholder-[#555] focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
                   />
@@ -726,6 +771,8 @@ export default function App() {
                   <input
                     type="email"
                     id="email"
+                    value={contactEmail}
+                    onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="Email@gmail.com"
                     className="w-full bg-[#0A0A0A] border border-white/5 rounded-xl px-4 py-3.5 text-[15px] text-[#EDEDED] placeholder-[#555] focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
                   />
@@ -736,15 +783,23 @@ export default function App() {
                 <textarea
                   id="message"
                   rows={4}
+                  value={contactMessage}
+                  onChange={(e) => setContactMessage(e.target.value)}
                   placeholder="Tell me about your project or opportunity..."
                   className="w-full bg-[#0A0A0A] border border-white/5 rounded-xl px-4 py-3.5 text-[15px] text-[#EDEDED] placeholder-[#555] focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all resize-none"
                 ></textarea>
               </div>
+              {contactStatus && (
+                <p className={`text-sm ${contactStatus.type === 'success' ? 'text-emerald-400' : contactStatus.type === 'error' ? 'text-rose-400' : 'text-slate-300'}`}>
+                  {contactStatus.message}
+                </p>
+              )}
               <button
                 type="submit"
-                className="w-full bg-[#EDEDED] text-[#0A0A0A] font-medium text-[15px] rounded-xl py-3.5 hover:scale-[1.02] hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] mt-4"
+                disabled={isSubmitting}
+                className="w-full bg-[#EDEDED] text-[#0A0A0A] font-medium text-[15px] rounded-xl py-3.5 hover:scale-[1.02] hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message <ArrowUpRight size={18} />
+                {isSubmitting ? 'Sending...' : 'Send Message'} <ArrowUpRight size={18} />
               </button>
             </form>
           </div>
