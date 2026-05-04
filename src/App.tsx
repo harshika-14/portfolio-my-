@@ -558,31 +558,6 @@ export default function App() {
           </div>
         </motion.section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-24 bg-[#111] border border-white/5 p-6 md:p-8 rounded-2xl relative overflow-hidden"
-        >
-          <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#EDEDED] to-transparent opacity-50"></div>
-          <h2 className="text-[13px] font-medium text-[#71717A] uppercase tracking-widest mb-6">Currently Building</h2>
-          <ul className="space-y-4">
-            <li className="flex items-start gap-3">
-              <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#EDEDED] animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
-              <div>
-                <p className="text-[15px] font-medium text-[#EDEDED]">AI-based UI Analyzer</p>
-                <p className="text-sm text-[#A1A1AA] mt-1">An agentic tool to audit and improve UI patterns.</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#71717A]"></div>
-              <div>
-                <p className="text-[15px] font-medium text-[#EDEDED]">IoT + Web Integration</p>
-                <p className="text-sm text-[#A1A1AA] mt-1">Bridging hardware sensors with seamless web dashboards.</p>
-              </div>
-            </li>
-          </ul>
-        </motion.section>
 
 
 
